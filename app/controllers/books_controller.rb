@@ -16,6 +16,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    # user_idの情報はフォームから送られていないので、追加で代入してあげないといけない
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
